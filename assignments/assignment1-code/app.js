@@ -5,22 +5,27 @@
   LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope){
 $scope.message="";
-
+$scope.items="";
 //function handler  event blur
-$scope.verify =function(){
 
-  if (numItem($scope.items) <=3){
+//function handler event  button
+$scope.choice = function () {
+
+  if ($scope.items == "")
+  {
+    $scope.message= "Please enter data first ";
+
+  }
+  else if (numItem($scope.items) <=3){
     $scope.message = " Enjoy";
   }else {
     $scope.message =  "Too much !";
 
   }
-}
 
-//function handler event  button
-$scope.choice = function () {
-  if ($scope.items == "")
-    $scope.message= "Please enter data first ";}
+ }
+
+
 
 
 // item empty are not counted
