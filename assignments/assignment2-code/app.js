@@ -2,6 +2,7 @@
   angular.module("ShoppingListCheckOff",[])
   .controller("ToBuyShoppingController",ToBuyShoppingController)
   .controller("AlreadyBoughtShoppingController",AlreadyBoughtShoppingController)
+  .filter("plural",plural)
   .service("ShoppingListCheckOffService",ShoppingListCheckOffService);
 
   ToBuyShoppingController.$inject=['ShoppingListCheckOffService'];
@@ -9,10 +10,10 @@
 
   function ToBuyShoppingController(ShoppingListCheckOffService){
     var listesToBuy =[{name:"cookie",quantity: 2 },
-                      {name:"bread",quantity: 2},
+                      {name:"bread",quantity: 1},
                       {name:"ananas",quantity: 5},
-                      {name:"cheese",quantity: 2 },
-                      {name:"milk",quantity: 2},
+                      {name:"cheese",quantity: 1 },
+                      {name:"lemon",quantity: 2},
                       {name:"ananas",quantity: 5}];
 
 
@@ -61,6 +62,16 @@ function ShoppingListCheckOffService(){
   service.addBought = function(index){
     service.listeBought.push(service.listeToBuy[index]);
     service.listeToBuy.splice(index,1);  }
+}
+
+function plural(){
+  return function(item){
+  var plural = "";
+
+  if ((item.quantity>1) && ( item.name.charAt( item.name.length -1 )!='s' ))
+    plural = "s";
+    return item.name + plural ;
+  }
 }
 
 
