@@ -14,7 +14,7 @@
                       {name:"ananas",quantity: 5},
                       {name:"cheese",quantity: 1 },
                       {name:"lemon",quantity: 2},
-                      {name:"ananas",quantity: 5}];
+                      {name:"apple",quantity: 5}];
 
 
     var ToBuy = this ;
